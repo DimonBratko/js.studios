@@ -112,21 +112,74 @@ console.log(und); */ //undefined пусто
 
 //Операторы (+ - * / % **)
 
-console.log("arr" + " - object");
+//console.log("arr" + " - object");
 
-console.log(4 + " - object");
+//console.log(4 + " - object");
 
-console.log(4 + +" - object"); //NaN second + - унарный
+//console.log(4 + +" - object"); //NaN second + - унарный
 
-console.log(4 + +"5");
+//console.log(4 + +"5");
 
-let incr = 10,
-  decr = 10;
+//let incr = 10,
+//decr = 10;
 
 //incr++; //оператор инкримента, т.е. увелечение на 1
 //decr--; //операт декремента, т.е. уменшение на 1
-++incr;
---decr;
+//++incr;
+//--decr;
 
-console.log(incr);
-console.log(decr);
+//console.log(incr++); //так не работает
+//console.log(--decr); //так  работает
+
+//console.log(5%2); //% значит что 5 делится на 5 2 раза и получаем 1
+
+//console.log(2*2 == 4); // == сравнение и неважно просто число или ""
+//console.log(2*2 === "4"); // === строгое сравнение и если "" то уже это неправда
+//console.log(2*2 + 2 === "4");
+//console.log(2*2 + 2 != "4"); // != знак
+// && - and - работает когда минимум два варианта правдивы
+// || - or - работает когда один из вариантов правда
+// ! - оператор отрицание меняет значение на противоположное
+
+//const isCheked = true,
+//      isClose = false;
+
+//console.log(isCheked && isClose);
+//console.log(!isCheked || isClose);
+
+/* * Задание на урок:
+1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
+'Сколько фильмов вы уже посмотрели?'
+2) Создать объект personalMovieDB и в него поместить такие свойства:
+    - count - сюда передается ответ на первый вопрос
+    - movies - в это свойство поместить пустой объект
+    - actors - тоже поместить пустой объект
+    - genres - сюда поместить пустой массив
+    - privat - в это свойство поместить boolean(логическое) значение false
+3) Задайте пользователю по два раза вопросы:
+    - 'Один из последних просмотренных фильмов?'
+    - 'На сколько оцените его?'
+Ответы стоит поместить в отдельные переменные
+Записать ответы в объект movies в формате: 
+    movies: {
+        'logan': '8.1'
+    }
+Проверить, чтобы все работало без ошибок в консоли */
+
+const numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+const personalMovieDB = {
+  count: numberOfFilms,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+};
+const a = prompt("Один из последних просмотренных фильмов?", ""),
+  b = prompt("На сколько оцените его?", ""),
+  c = prompt("Один из последних просмотренных фильмов?", ""),
+  d = prompt("На сколько оцените его?", "");
+
+personalMovieDB.movies[a] = b;
+personalMovieDB.movies[c] = d;
+
+console.log(personalMovieDB);
