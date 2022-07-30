@@ -492,7 +492,7 @@ if (personalMovieDB.count < 10) {
 
 console.log(personalMovieDB); */
 
-("use strict");
+//("use strict");
 // функсии - ()-для аргументовб внутри фигрных скобок действия, !!! что бы функция заработала нужно  вызвать к имени и обезательно круглые скобки+;
 //главное в функции ее имя - как правило это глагол с припиской над чем выполняется действие.
 //в скобках задается аргумент который мы задаем потом в дейсвтии, а отдельно им даем значение аргументов можно задавать много
@@ -672,7 +672,7 @@ false - выводит в консоль главный объект прогр�
 genres
 P.S. Функции вызывать не обязательно */
 
-let numberOfFilms;
+/* let numberOfFilms;
 
 function start() {
   numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
@@ -693,7 +693,7 @@ const personalMovieDB = {
 
 function rememberMyFilms() {
   for (let i = 0; i < 2; i++) {
-    const a = prompt("Один из последних просмотренных фильмов?", ""),
+    const a = prompt("Один из последних просмотренных фильмов?", "").trim(), // добавление этого метода позволяет обрезать пробелы
       b = prompt("На сколько оцените его?", "");
 
     if (a != null && b != null && a != "" && b != "" && a.length < 50) {
@@ -734,4 +734,827 @@ function writeYourGenres() {
   }
 }
 
-writeYourGenres();
+writeYourGenres(); */
+
+//вычисление площади и обьема
+
+/* function calculateVolumeAndArea(lenght) {
+  if (typeof lenght !== "number" || lenght < 0 || !Number.isInteger(lenght)) {
+    return "При вычислении произошла ошибка";
+  }
+  let volume = 0,
+    area = 0;
+
+  volume = lenght * lenght * lenght;
+  // length ** 3 - это тоже самое, что и выше или варианты через цикл.
+  // ** - это оператор степени, напоминаю. Но онлайн редактор его не принимает
+  area = 6 * (lenght * lenght);
+
+  return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
+}
+calculateVolumeAndArea(5);
+
+//функция, которая будет опеределять номера купе по преданому ей номеру места
+
+function getCoupeNumber(seatNumber) {
+  if (typeof(seatNumber) !== 'number' || seatNumber < 0 || !Number.isInteger(seatNumber)) {
+    return "Ошибка. Проверьте правильность введенного номера места";
+  }
+  if (seatNumber === 0 || seatNumber > 36) {
+    return "Таких мест в вагоне не существует";
+  }
+   for (let i = 4; i<=36; i = i + 4) {
+    if (seatNumber <= i) {
+      return Math.ceil(i / 4);
+    }
+   }
+}
+getCoupeNumber(33);
+
+// функция принимает в себя целое число минут и возвращает время в нужном формате строки
+
+function getTimeFromMinutes(minutesTotal) {
+  if (typeof(minutesTotal) !== 'number' || minutesTotal < 0 || !Number.isInteger(minutesTotal)) {
+    return "Ошибка, проверьте данные"
+  }
+  const hours = Math.floor(minutesTotal / 60);
+  const minutes = minutesTotal % 60;
+
+  let hoursStr = '';
+
+  switch (hours) {
+    case 0:
+      hoursStr = 'часов';
+      break;
+    case 1:
+      hoursStr = 'час';
+      break;
+    case 2:
+    case 3:
+    case 4:
+      hoursStr = 'часа';
+      break;
+    default:
+      hoursStr = 'часов';
+  }
+  return `Это ${hours} ${hoursStr} ${minutes} минут`; 
+}
+getTimeFromMinutes(250);
+
+// функция которая принмает в себя 4 числа и возвращает большое из них
+function findMaxNumber(a,b,c,d) {
+  // Самое простое - это использовать Math.max :)
+    // А оптимизировать такую проверку мы научимся совсем скоро
+  if (typeof(a) !== 'number'||
+      typeof(b) !== 'number'||
+      typeof(c) !== 'number'||
+      typeof(d) !== 'number') {
+        return 0;
+      } else {
+        return Math.max(a,b,c,d);
+      }
+}
+findMaxNumber(2, 10, 5.7, 3);
+findMaxNumber(1, 7, '6', '11');
+
+
+function fib(num) {
+    if (typeof(num) !== 'number' || num <= 0 || !Number.isInteger(num)) {
+      return "";
+    }
+
+    let result = 0;
+    let first = 0;
+    let second = 1;
+
+    for (let i = 0; i < num; i++) {
+      if (i + 1 === num) {
+        result += `${first}`;
+      } else {
+        result += `${first}`;
+      }
+
+    let third = first + second;
+    first = second;
+    second = third;
+    }
+    return result;
+}
+
+fib(5); */
+
+// callback  - указываем какая функция должна выполняться после того как дpугая выполнилась
+/* function first() {
+  // Do something
+  setTimeout(function () {
+    console.log(1);
+  }, 500);
+}
+
+function second() {
+  console.log(2);
+}
+
+first();
+second();
+//
+function learnJS(lang, callback) {
+  console.log(`я учу: ${lang}`);
+  callback();
+}
+
+function done() {
+  console.log('я прошел этот урок');
+}
+
+learnJS('JavaScript', done); */
+
+// обьектыБ дестуктуризация
+
+//const obj = new Object();
+
+/* const options = {
+  name: "test",
+  width: 1024,
+  height: 1024,
+  colors: {
+    border: "black",
+    bg: "red",
+  },
+  //можем создать метод который будет работать внутри
+  makeTest: function () {
+    console.log("Test");
+  }
+};
+
+options.makeTest (); // обезательно надо запускать
+
+// деструктуризация - это возможность работать с каждым свойствой отдельно
+const {border, bg} = options.colors;
+
+console.log(border); */
+//console.log(Object.keys(options).length); // получаем масив с всеми ключами (name, w< h< colors)
+//console.log(options.name);
+
+//delete options.name; //способ удаление (исключение) значения
+
+//console.log(options);
+
+//для переборки функций в обьекти используем -> for (let ..in...) {} если внутри ести еще обьекты то запускаем исключение через typeof
+/* let counter = 0; // для пересчета свойств в обьекте
+
+for (let key in options) {
+  if (typeof (options[key]) === 'object') {
+    for (let i in options[key]) {
+      console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
+      counter++;
+    }
+  }  else {
+    console.log(`Свойство ${key} имеет значение ${options[key]}`);
+    counter++;
+  }
+}
+console.log(counter); */
+
+//масивы и псевдомасивы - методы и свойства/ псевдомасивы похожи на масивы, только к ним не применяются методы и они отбражают элементы строго по порядку
+//length - количество элементов которые находятся внутри
+/* const arr = [1, 21, 13, 26, 8];
+arr.sort(compareNum);
+console.log(arr);
+
+function compareNum(a, b) {
+  return a - b;
+} */
+
+//arr[99] = 0;
+//console.log(arr.length);
+//console.log(arr);
+// arr.pop(); // метод удаления последнего значения
+//arr.push(10); // метод добавления к последнему значения
+//arr.forEach() // позволяет гибко перебрать все элементы
+//arr.forEach(function (item, i, arr) {
+//  console.log(`${i}: ${item} внутри масива ${arr}`);
+//});
+//console.log(arr);
+
+// перебор элементов внутри масива
+// 1
+//for (let i = 0; i < arr.length; i++) {
+//  console.log(arr[i]);
+//}
+//2 в методе for (let ... of) можно использовать breake (остановка) или contine (пропуск)
+//for (let value of arr) {
+//  console.log(value);
+//}
+
+// МЕТОДЫ split превращает строку в масив // join превращает масив в строку// sort - сортировка массива как строки, если в масиве числа то пописуем функцию.
+
+/* const str = prompt("", "");
+const product = str.split(", ");
+product.sort();
+console.log(product.join("; "));
+
+
+const arr = [1, 21, 13, 26, 8];
+arr.sort(compareNum);
+console.log(arr);
+
+function compareNum(a, b) {
+  return a - b;
+} */
+
+// передача данных по ссылке или по значению / есть поверхностное (простые значение) или глубокое клонирование
+
+/* let a = 5,
+    b = a;
+
+b = b + 5;
+ console.log(b);
+ console.log(a);
+
+//
+ const obj = {
+  a: 5,
+  b: 1
+};
+
+const copy = obj; // передается не значение а ссылка на предыдущую структуру
+
+copy.a = 10;
+console.log(copy);
+console.log(obj); */
+
+// клонирование обьекта
+/* function copy(mainObj) {
+  let objCopy = {};
+
+
+  let key;
+  for (key in mainObj) {
+    objCopy[key] = mainObj[key];
+  }
+
+  return objCopy;
+}
+
+const numbers = {
+  a: 2,
+  b: 5,
+  c: {
+    x: 7,
+    y: 4,
+  }
+};
+
+const newNumbers = copy(numbers);
+
+newNumbers.a = 10;
+newNumbers.c.x = 10;
+
+//onsole.log(newNumbers);
+//console.log(numbers);
+
+//добавление новых значений в обьект
+
+const add = {
+  d: 17,
+  e: 25
+};
+
+//console.log(Object.assign(numbers), add);
+
+// создаем пустой обьект и клонируем
+const clone = Object.assign({}, add);
+
+clone.d = 20;
+
+//console.log(add);
+//console.log(clone);
+
+//клонирование масива
+const oldArrey = ['a', 'b', 'c'];
+const newArrey = oldArrey.slice();
+
+
+newArrey[1] = 'ddddddd';
+
+console.log(newArrey);
+console.log(oldArrey);
+
+// оператор разворота (...)
+
+const video = ['youtube', 'vimeo', 'hdrezka'],
+      blogs = ['wordpress', 'livejournal', 'blogger'],
+      internet = [...video, ...blogs, 'instagram', 'fb'];
+
+console.log(internet);
+//
+function log(a, b, c) {
+  console.log(a);
+  console.log(b);
+  console.log(c);
+}
+
+const num = [2, 4, 7];
+
+log(...num);
+
+// спред оператор для разворота обьектов
+
+const arrey = ["a", "b"];
+
+const newAarrey = [...arrey];
+//
+
+const g = {
+  one: 1,
+  two: 2
+};
+
+const newObj = {...g}; */
+
+/* const personalPlanPeter = {
+  name: "Peter",
+  age: "29",
+  skills: {
+    languages: ["ru", "eng"],
+    programmingLangs: {
+      js: "20%",
+      php: "10%",
+    },
+    exp: "1 month",
+  },
+  showAgeLangs: function (plan) {
+    const { age } = plan;
+    const { languages } = plan.skills;
+    let str = `Мне ${age} и я владею языками:`;
+
+    languages.forEach(function (lang) {
+      str += `${lang.toUpperCase()}`;
+    });
+
+    return str;
+  }
+};
+
+personalPlanPeter.showAgeLangs(personalPlanPeter);
+
+function showExperience(plan) {
+  const { exp } = plan.skills;
+  return exp;
+}
+showExperience(personalPlanPeter);
+
+function showProgrammingLangs(plan) {
+  let str = '';
+  const {programmingLangs} = plan.skills;
+  for (let key in programmingLangs) {
+    str += `Язык ${key} изучен на ${programmingLangs[key]}\n`;
+  }
+
+  return str;
+}
+showProgrammingLangs(personalPlanPeter);
+
+//
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
+    let str = '';
+
+    arr.length === 0 ? str = 'Семья пуста' : str = 'Семья состоит из: ';
+
+    arr.forEach(member => {
+      str += `${member}`;
+    });
+   
+    return str;
+}
+
+showFamily(family);
+// нижний регистр
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+    arr.forEach(city => {
+      console.log(city.toLowerCase());
+    });
+}
+standardizeStrings(favoriteCities);
+
+// вернуть предложние в обратном порядке букв
+const someString = 'This is some strange string';
+
+function reverse(str) {
+    if(typeof(str) !== 'string') {
+    return "Ошибка!";
+  }
+  // применяем методы split (Разбить строку на подстроки, используя указанный разделитель, и вернуть их в виде массива.)reverse(переворачивает элементы массива на место. Этот метод изменяет массив и возвращает ссылку на тот же массив.)join (Добавляет все элементы массива в строку, разделенную указанной строкой-разделителем.)
+  return str.split('').reverse('').join('');
+}
+reverse(someString);
+
+// банкомат с двумя валютами - функция раюоты с валютами 
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+function availableCurr(arr, missingCurr) {
+  let str = '';
+  arr.length === 0 ? str = 'Нет доступных валют' : str = 'Доступные валюты:\n';
+  
+  arr.forEach(function (curr, i) {
+    if (curr !== missingCurr) {
+      str += `${curr}\n`;
+    }
+  });
+  return str;
+}
+availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY'); */
+
+// обьектно-ориентиованное програмирование / прототипно ориентированное програмирование
+
+/* let str = "some";
+let strObj = new String(str);
+//строка превращается в обьект
+//console.log(typeof(str));
+//console.log(typeof(strObj));
+console.log([1, 2, 3]);
+
+//prototype некоторые значение могут брать свойства и методы из своего прототипа
+const soldier = {
+  health: 400,
+  armor: 100,
+  sayHello: function () {
+    console.log('Hello');
+  }
+};
+const jonh = Object.create(soldier); // мы создаем новый обьект который прототип от солдата
+
+//const john = {
+  //health: 100/
+//};
+//john.__proto__ = soldier; устаревший метод
+
+Object.setPrototypeOf(john, soldier); //установили прототип от джона для солдат
+
+//console.log(john.armor);
+john.sayHello();
+ */
+
+/* Задание на урок:
+1) У нас уже есть рабочее приложение, состоящее из отдельных функций. Представьте, что
+перед вами стоит задача переписать его так, чтобы все функции стали методами объекта personalMovieDB
+Такое случается в реальных продуктах при смене технологий или подхода к архитектуре программы
+2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
+переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
+3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
+Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
+при помощи метода forEach вывести в консоль сообщения в таком виде:
+"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
+
+("use strict");
+
+/* const personalMovieDB = {
+  count: 0,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+  start: function () {
+    personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+    while (
+      personalMovieDB.count == "" ||
+      personalMovieDB.count == null ||
+      isNaN(personalMovieDB.count)
+    ) {
+      personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+    }
+  },
+  rememberMyFilms: function () {
+    for (let i = 0; i < 2; i++) {
+      const a = prompt("Один из последних просмотренных фильмов?", "").trim(), // добавление этого метода позволяет обрезать пробелы
+        b = prompt("На сколько оцените его?", "");
+
+      if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+        console.log("done");
+      } else {
+        console.log("error");
+        i--;
+      }
+    }
+  },
+  detectPersonalLevel: function () {
+    if (personalMovieDB.count < 10) {
+      console.log("Просмотрено довольно мало фильмов");
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+      console.log("Вы классический зритель");
+    } else if (personalMovieDB.count >= 30) {
+      console.log("Вы киноман");
+    } else {
+      console.log("Произошла ошибка");
+    }
+  },
+  showMyDB: function (hidden) {
+    if (!hidden) {
+      console.log(personalMovieDB);
+    }
+  },
+  toggleVisibleMyDB: function () {
+    if (personalMovieDB.privat) {
+      personalMovieDB.privat = false;
+    } else {
+      personalMovieDB.privat = true;
+    }
+  },
+  writeYourGenres: function () {
+    //for (let i = 1; i <= 3; i++) {
+    //let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+    //if (genre === "" || genre == null) {
+    //  console.log("Вы ввели некорруктные данные или не ввели их вообще");
+    //  i--;
+    //} else {
+    //  personalMovieDB.genres[i - 1] = genre;
+    //}
+    for (let i = 1; i < 2; i++) {
+      let genres = prompt(`Введити ваши любимые жанры через запятую`).toLowerCase(); //toLowerCase переделывает все в нижний регистр
+      if (genres === "" || genres == null) {
+        console.log("Вы ввели некорруктные данные или не ввели их вообще");
+        i--;
+      } else {
+        personalMovieDB.genres = genres.split(", "); //split Разбить строку на подстроки, используя указанный разделитель, и вернуть их в виде массива.
+        personalMovieDB.genres.sort(); //sort сортирует по алвавиту
+      }
+    }
+    personalMovieDB.genres.forEach((item, i) => {
+      console.log(`Любимый жанр ${i + 1} - это ${item}`);
+    });
+  }
+};
+ */
+
+//
+// есть магазин - посчитать бюджет по отоплению согласно площадей
+/* const shoppingMallData = {
+  shops: [
+      {
+          width: 10,
+          length: 5
+      },
+      {
+          width: 15,
+          length: 7
+      },
+      {
+          width: 20,
+          length: 5
+      },
+      {
+          width: 8,
+          length: 10
+      }
+  ],
+  height: 5,
+  moneyPer1m3: 30,
+  budget: 50000
+}
+
+function isBudgetEnough(data) {
+  let squire = 0;
+  let volume = 0;
+
+  data.shops.forEach(shop => {
+    squire = shop.width * shop.length; 
+  });
+
+  volume = data.height * squire;
+
+  if (data.budget - (volume* data.moneyPer1m3) >=0) {
+    return 'Бюджета достаточно';
+  } else {
+    return 'Бюджета недостаточно';
+  }
+}
+isBudgetEnough(shoppingMallData);
+
+// распределяем игроков по алфавиту и группам и если ктото + или + добавляем в 4 строку
+
+
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
+
+function sortStudentsByGroups(arr) {
+  arr.sort();
+  const a = [], b = [], c = [], rest = [];
+
+  for (let i = 0; i < arr.length; i++) {
+      if (i < 3) {
+          a.push(arr[i]);
+      } else if (i < 6) {
+          b.push(arr[i]);
+      } else if (i < 9) {
+          c.push(arr[i]);
+      } else {
+          rest.push(arr[i]);
+      }
+  }
+  return [a,b,c, `Оставшиеся студенты: ${rest.length === 0 ? '-' : rest.join(', ')}`]
+}
+sortStudentsByGroups(students); */
+
+//динамическая тиризация - это когда число може стать строкойЮ строка чилслом а обьект булиновым значением
+
+// to String
+
+//1) редко
+/* console.log(typeof(String(null))); 
+console.log(typeof(String(null)));  
+
+//2) контонтинация - это сложение строки с чем-то получаем строку
+console.log(typeof(5 + '')); 
+
+//позволяет перейти в указанный каталог
+const num = 5;
+
+console.log("https//facebook/catalog/" + num);
+
+//задаем стили
+
+const fontSize = 26 + 'px';
+
+// to Number
+//1) редко
+console.log(typeof(Number('fgdg'))); 
+
+//2) унарный плюс - до строки добавляем + 
+console.log(typeof(+'5')); 
+
+//3) parseInt
+console.log(typeof(parseInt("15px", 10))); 
+
+// Present
+
+let answer = +prompt("Ytllu", "")
+
+//to Boolean
+
+//0, '', null, undefined, NaN = false
+// все остальное true
+//1)
+let switcher = null;
+if(switcher) {
+  console.log('Working....');
+}
+
+switcher = 2;
+if(switcher) {
+  console.log('Working....');
+}
+//2) редко
+console.log(typeof(Boolean('4'))); 
+
+//3) редко
+console.log(typeof(!!"4444"));  */
+
+//замыкание
+
+/* let number = 5;
+debugger;
+
+function logNumber() {
+  let number = 4;
+  debugger;
+  console.log(number);
+}
+number = 6;
+logNumber();
+debugger; */
+// обьяснение замыкания
+/* function createCounter() {
+  let counter = 0;
+  const myFunction = function () {
+    counter = counter + 1;
+    return counter;
+  };
+  return myFunction;
+}
+const increment = createCounter();
+const c1 = increment();
+const c2 = increment();
+const c3 = increment();
+console.log(c1, c2, c3);
+
+ */
+
+//	Какое будет выведено значение: let x = 5; alert( x++ ); ? сначала 5. если поменяем ++ то 6
+//let x = 5;
+//alert(x++);
+
+//	Чему равно такое выражение: [ ] + false - null + true ? пустой масив будет строка (если бы было одно действие). нематематичские действия приводят к NaN
+//[] + false - null + true; // NaN
+//console.log([] + false - null + true);
+
+//	Что выведет этот код: let y = 1; let x = y = 2; alert(x); ? последовательное присваивание справа налево //2
+//let y = 1;
+//let x = (y = 2);
+//alert(x);
+
+//	Чему равна сумма [ ] + 1 + 2? пустой масив будет строка и следующие примитивные значение превращает в строку - "12"
+//console.log([ ] + 1 + 2);
+
+//	Что выведет этот код: alert( "1"[0] )?
+//alert("1"[0]); // строка примитивная с одного значения и в масиве будет выводится под 1 номером и получаем 1
+
+//	Чему равно 2 && 1 && null && 0 && undefined ? оператор && (и) всегда запинается на лжи(false) null = false
+//console.log(2 && 1 && null && 0 && undefined);
+
+//	Есть ли разница между выражениями? !!( a && b ) и (a && b)? !! возвращают булиновые значение и естественно не будет равно
+//console.log(!!(1 && 2) === (1 && 2));
+
+//	Что выведет этот код: alert( null || 2 && 3 || 4 );
+// смотрим таблицу приоритетов "и" выше сначала тогда && возвращает большее значение, потом null = false и возвращается 3, и 3 "или" 4 возвращает правду - 3
+//? оператор || (или) запинается на правде
+//оператор && (и) всегда запинается на лжи(false)
+//          (2)3  (1)3  (3)3
+//alert(null || (2 && 3) || 4);
+
+//	a = [1, 2, 3]; b = [1, 2, 3]; Правда ли что a == b ?
+// нет это разные хранилище информации и разными данными и неважно что они выглядят одинаково
+//const a = [1, 2, 3];
+//const b = [1, 2, 3];
+
+//console.log(a == b);
+
+//	Что выведет этот код: alert( +"Infinity" ); ? выведет Infinity, но это будет number, так как стоит унарный плюч
+//alert(+"Infinity");
+
+//	Верно ли сравнение: "Ёжик" > "яблоко"? false нет так как при сравнении буква в нижнем регистре выше чем в верхнем
+//console.log("Ёжик" > "яблоко");
+
+//	Чему равно 0 || "" || 2 || undefined || true || falsе ?
+// оператор || (или) запинается на правде - ответ 2
+//console.log(0 || "" || 2 || undefined || true || falsе);
+
+//
+const restorantData = {
+  menu: [
+    {
+      name: "Salad Caesar",
+      price: "14$",
+    },
+    {
+      name: "Pizza Diavola",
+      price: "9$",
+    },
+    {
+      name: "Beefsteak",
+      price: "17$",
+    },
+    {
+      name: "Napoleon",
+      price: "7$",
+    },
+  ],
+  waitors: [
+    { name: "Alice", age: 22 },
+    { name: "John", age: 24 },
+  ],
+  averageLunchPrice: "20$",
+  openNow: true,
+};
+
+function isOpen(prop) {
+  let answer = "";
+  prop ? (answer = "Закрыто") : (answer = "Открыто");
+
+  return answer;
+}
+console.log(isOpen(restorantData.openNow));
+
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+  if (
+    +fDish.price.slice(0, -1) + sDish.price.slice(0, -1) <
+    +average.slice(0, -1)
+  ) {
+    return "Цена ниже средней";
+  } else {
+    return "Цена выше средней";
+  }
+}
+
+console.log(
+  isAverageLunchPriceTrue(
+    restorantData.menu[0],
+    restorantData.menu[1],
+    restorantData.averageLunchPrice
+  )
+);
+
+function transferWaitors(data) {
+  const copy = Object.assign({}, data);
+
+  copy.waitors[0] = { name: "Mike", age: 32 };
+  return copy;
+}
+
+transferWaitors(restorantData);
